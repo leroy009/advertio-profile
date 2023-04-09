@@ -28,9 +28,12 @@ import {
     HomeIcon,
     UsersIcon,
     XMarkIcon,
+    FingerPrintIcon,
+    UserPlusIcon
 } from "@heroicons/vue/24/outline";
 import { ChevronDownIcon, MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
 import { usePermission } from "@/composables/permissions";
+import SidebarLink from "@/Components/SidebarLink.vue";
 
 const { hasRole } = usePermission();
 // const user = usePage().props.auth.user;
@@ -39,46 +42,32 @@ const { hasRole } = usePermission();
 const navigation = [
     {
         name: "Dashboard",
-        href: "/dashboard",
+        href: route('dashboard'),//"/dashboard",
         icon: HomeIcon,
-        current: true,
+        current: route().current('dashboard'),
         show: true,
     },
     {
-        name: "Admin",
-        href: "/admin",
+        name: "Users",
+        href: route('users.index'),//"/dashboard",
         icon: UsersIcon,
-        current: false,
-        show: hasRole("admin"), //user.roles.includes("admin"),
-    },
-    {
-        name: "Projects",
-        href: "#",
-        icon: FolderIcon,
-        current: false,
+        current: route().current('users.index'),
         show: true,
     },
     {
-        name: "Calendar",
-        href: "#",
-        icon: CalendarIcon,
-        current: false,
+        name: "Roles",
+        href: route('roles.index'),//"/dashboard",
+        icon: UserPlusIcon,
+        current: route().current('roles.index'),
         show: true,
     },
     {
-        name: "Documents",
-        href: "#",
-        icon: DocumentDuplicateIcon,
-        current: false,
+        name: "Permissions",
+        href: route('permissions.index'),//"/dashboard",
+        icon: FingerPrintIcon,
+        current: route().current('permissions.index'),
         show: true,
-    },
-    {
-        name: "Reports",
-        href: "#",
-        icon: ChartPieIcon,
-        current: false,
-        show: true,
-    },
+    }
 ];
 const teams = [
     { id: 1, name: "Heroicons", href: "#", initial: "H", current: false },
@@ -191,6 +180,12 @@ const showingNavigationDropdown = ref(false);
                                                         v-for="item in navigation"
                                                         :key="item.name"
                                                     >
+<!--                                                        <SidebarLink-->
+<!--                                                            :href="item.href"-->
+<!--                                                            current:item.current-->
+<!--                                                            show:item.show-->
+<!--                                                            icon:item.icon-->
+<!--                                                        />-->
                                                         <Link
                                                             v-if="item.show"
                                                             :href="item.href"
@@ -250,8 +245,9 @@ const showingNavigationDropdown = ref(false);
                                                     </li>
                                                 </ul>
                                             </li>
+                                            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
                                             <li class="mt-auto">
-                                                <a
+                                                <Link
                                                     href="#"
                                                     class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
                                                 >
@@ -260,7 +256,7 @@ const showingNavigationDropdown = ref(false);
                                                         aria-hidden="true"
                                                     />
                                                     Settings
-                                                </a>
+                                                </Link>
                                             </li>
                                         </ul>
                                     </nav>
@@ -294,23 +290,30 @@ const showingNavigationDropdown = ref(false);
                                         v-for="item in navigation"
                                         :key="item.name"
                                     >
-                                        <Link
-                                            v-if="item.show"
+                                        <SidebarLink
                                             :href="item.href"
-                                            :class="[
-                                                item.current
-                                                    ? 'bg-gray-800 text-white'
-                                                    : 'text-gray-400 hover:text-white hover:bg-gray-800',
-                                                'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
-                                            ]"
-                                        >
-                                            <component
-                                                :is="item.icon"
-                                                class="h-6 w-6 shrink-0"
-                                                aria-hidden="true"
-                                            />
-                                            {{ item.name }}
-                                        </Link>
+                                            :current="item.current"
+                                            :show="item.show"
+                                            :icon="item.icon"
+                                            :name="item.name"
+                                        />
+<!--                                        <Link-->
+<!--                                            v-if="item.show"-->
+<!--                                            :href="item.href"-->
+<!--                                            :class="[-->
+<!--                                                item.current-->
+<!--                                                    ? 'bg-gray-800 text-white'-->
+<!--                                                    : 'text-gray-400 hover:text-white hover:bg-gray-800',-->
+<!--                                                'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',-->
+<!--                                            ]"-->
+<!--                                        >-->
+<!--                                            <component-->
+<!--                                                :is="item.icon"-->
+<!--                                                class="h-6 w-6 shrink-0"-->
+<!--                                                aria-hidden="true"-->
+<!--                                            />-->
+<!--                                            {{ item.name }}-->
+<!--                                        </Link>-->
                                     </li>
                                 </ul>
                             </li>

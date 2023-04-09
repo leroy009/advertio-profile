@@ -65,5 +65,5 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-I am on number 5: Create User Resource
-https://www.youtube.com/watch?v=H0iN0HyM0S0&list=PL6tf8fRbavl1kVf8eE6f220To_VmWQ45t&index=5&ab_channel=CodeWithTony
+I am on number 7: 7 Display Users, Roles and Permissions | Laravel Permission with Inertia
+https://www.youtube.com/watch?v=ozgK1KCbcew&list=PL6tf8fRbavl1kVf8eE6f220To_VmWQ45t&index=7&ab_channel=CodeWithTony

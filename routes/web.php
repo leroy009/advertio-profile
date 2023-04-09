@@ -26,6 +26,10 @@ Route::get('/', function () {
     ]);
 });
 
+Route::resource('/users', \App\Http\Controllers\UserController::class);
+Route::resource('/roles', \App\Http\Controllers\RoleController::class);
+Route::resource('/permissions', \App\Http\Controllers\PermissionController::class);
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
