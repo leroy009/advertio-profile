@@ -93,7 +93,7 @@ const showingNavigationDropdown = ref(false);
     <body class="h-full">
     ```
   -->
-    <div class="w-full h-full">
+    <div class="w-full h-full dark:bg-gray-800">
         <div>
             <TransitionRoot as="template" :show="sidebarOpen">
                 <Dialog
@@ -362,13 +362,13 @@ const showingNavigationDropdown = ref(false);
                 </div>
             </div>
 
-            <div class="lg:pl-72">
+            <div class="lg:pl-72 ">
                 <div
-                    class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8"
+                    class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white dark:bg-gray-800 shadow px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8"
                 >
                     <button
                         type="button"
-                        class="-m-2.5 p-2.5 text-gray-700 lg:hidden"
+                        class="-m-2.5 p-2.5 text-gray-700 dark:text-gray-300 lg:hidden"
                         @click="sidebarOpen = true"
                     >
                         <span class="sr-only">Open sidebar</span>
@@ -381,7 +381,7 @@ const showingNavigationDropdown = ref(false);
                         aria-hidden="true"
                     />
 
-                    <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
+                    <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6 bg-white dark:bg-gray-800 ">
                         <form
                             class="relative flex flex-1"
                             action="#"
@@ -396,11 +396,12 @@ const showingNavigationDropdown = ref(false);
                             />
                             <input
                                 id="search-field"
-                                class="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
+                                class="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm dark:text-gray-400 dark:placeholder:text-gray-400 dark:focus:ring-0 dark:bg-gray-800"
                                 placeholder="Search..."
                                 type="search"
                                 name="search"
-                            />
+                            >
+
                         </form>
                         <div class="flex items-center gap-x-4 lg:gap-x-6">
                             <button
@@ -432,10 +433,10 @@ const showingNavigationDropdown = ref(false);
                                         class="hidden lg:flex lg:items-center"
                                     >
                                         <span
-                                            class="ml-4 text-sm font-semibold leading-6 text-gray-900"
+                                            class="ml-4 text-sm font-semibold leading-6 text-gray-900 dark:text-gray-400"
                                             aria-hidden="true"
-                                            >Tom Cook</span
-                                        >
+                                        >{{ $page.props.auth.user.name }}</span>
+
                                         <ChevronDownIcon
                                             class="ml-2 h-5 w-5 text-gray-400"
                                             aria-hidden="true"
@@ -494,13 +495,13 @@ const showingNavigationDropdown = ref(false);
                     class="bg-white dark:bg-gray-800 shadow"
                     v-if="$slots.header"
                 >
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                         <slot name="header" />
                     </div>
                 </header>
 
                 <!-- Page Content -->
-                <main class="py-10">
+                <main class=" bg-white dark:bg-gray-800  text-gray-800 dark:text-gray-200 leading-tight">
                     <slot />
                 </main>
             </div>
